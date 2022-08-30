@@ -1,4 +1,5 @@
-var Versions = {
+var Versions =[
+    {
     Version_name : ['Windows 1.01', 'Windows 1.02', 'Windows 1.03', 'Windows 1.04', 'Windows 2.01', 'Windows 2.03', 'Windows 2.1', 'Windows 2.11', 'Windows 3.0', 'Windows 3.1', 'Windows NT 3.1', 'Windows 3.11', 'Windows 3.2', 'Windows NT 3.5', 'Windows NT 3.51', 'Windows 95', 'Windows NT 4.0', 'Windows 98', 'Windows 2000', 'Windows Me', 'Windows XP_Whistler', 'Windows XP_Freestyle', 'Windows XP_Harmony', 'Windows XP_Symphony', 'Windows XP_Emerald', 'Windows Vista', "Windows 7", 'Windows 8', 'Windows 8.1_Blue1', 'Windows 8.1_Blue2', 'Windows 10 version 1507', 'Windows 10 version 1511', 'Windows 10 version 1607', 'Windows 10 version 1703', 'Windows 10 version 1709', 'Windows 10 version 1803', 'Windows 10 version 1809', 'Windows 10 version 1903', 'Windows 10 version 1909', 'Windows 10 version 2004', 'Windows 10 version 20H2', 'Windows 10 version 21H1', 'Windows 10 version 21H2', 'Windows 10 version 22H2', 'Windows 11 version 21H2', 'Windows 11 version 22H2' ],
     Release_Date : [11-20-1985, 05-14-1986, 08-21-1986, 04-10-1987, 12-09-1987, 12-09-1987, 05-27-1988, 03-13-1989, 05-22-1990, 04-06-1992, 11-08-1993, 11-22-1993, 09-21-1994, 05-30-1995, 08-24-1995, 08-24-1996, 06-25-1998, 02-17-2000, 09-14-2000, 10-25-2001, 10-29-2002, 09-30-2003, 10-12-2004, 10-14-2005, 01-30-2007, 09-22-2009, 10-26-2012, 10-17-2013, 05-23-2014, 07-29-2015, 11-10-2015, 08-02-2016, 04-05-2017, 10-17-2017, 04-30-2018, 11-13-2018, 05-21-2019, 11-12-2019, 05-27-2020, 10-20-2020, 05-18-2021, 11-16-2021, H2-2022, 10-05-2021, H2-2022],
     Bugs: [],
@@ -32,7 +33,13 @@ var Versions = {
                 'Windows 8 .. The Start menu was replaced with a Start screen, Apps screen and Charms bar, the latter a small taskbar with five functions (search, share, start, devices and settings)',
                 'Windows 8.1 .. the latter a small taskbar with five functions (search, share, start, devices and settings)',
                 'Windows 10 version 1507 .. '],
+    type : ["patch",'patch','enghancement','enhancement','major','enhancement','patch','patch','major','patch','enhancement','patch','enhancement','enhancement','patch','patch','major','enhancement','patch','enhancement','major','major','patch','patch','major','patch','major','major','patch','enhancement','enhancement','major','major','patch','patch','patch','patch','major','enhancement','enhancement','enhancement','enhancement','patch','patch','enhancement','major','major'],
     Author : []
 }
+]
+console.log("Windows Versions:",Versions)
+
+patch = Versions.filter
+
 
 
