@@ -39,7 +39,14 @@ var Versions =[
 ]
 console.log("Windows Versions:",Versions)
 
-patch = Versions.filter
+patch = Versions.filter(arr => arr[0].type.includes("patch"))
+major = Versions.filter(arr => arr[0].type.includes("major"))
+enhancement = Versions.filter(arr =>arr[0].type.includes("enhancement"))
+console.log("Patch:",patch)
+console.log("major:",major)
+console.log("enhancement:",enhancement)
+
+
 
 
 
