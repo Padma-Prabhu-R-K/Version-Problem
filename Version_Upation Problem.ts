@@ -1,14 +1,20 @@
-interface versionsinterface{
-    Name            : any,
-    Released        : any,
-    Version         : string,
-    Features        : string,
-    type            : string,
-    Bug             : any,
-    Author          : string,
-    Architecture    : string
+interface IBug_List {
+    Description: string
+    ID: string
 }
-var Versions:versionsinterface[] = [
+
+interface IVersion {
+    Name: any,
+    Released: Date,
+    Version: string,
+    Features: string,
+    type: string,
+    Bug: IBug_List,
+    Author: string,
+    Architecture: string
+}
+
+var Versions: IVersion[] = [
     {
         Name: 'Windows 1.01',
         Released: new Date('11-20-1985'),
@@ -16,8 +22,8 @@ var Versions:versionsinterface[] = [
         Features: 'Windows 1.0 .. clipboard, calendar',
         type: 'patch',
         Bug: {
-            bug: 'GUI is not clear',
-            Bug_ID: '13121623'
+            Description: 'GUI is not clear',
+            ID: '13121623'
         },
         Author: 'Bill Gates',
         Architecture: 'x86-16'
@@ -29,8 +35,8 @@ var Versions:versionsinterface[] = [
         Features: 'Windows 1.02 .. clock, control panel',
         type: 'patch',
         Bug: {
-            bug: 'Ms-Dos is not suitable for higher bit servers',
-            Bug_ID: '21242325'
+            Description: 'Ms-Dos is not suitable for higher bit servers',
+            ID: '21242325'
         },
         Author: 'William H. Gates III',
         Architecture: 'x86-16'
@@ -42,8 +48,8 @@ var Versions:versionsinterface[] = [
         Features: 'Windows 1.03 .. clock, control panel, Notepad editor',
         type: 'enhancement',
         Bug: {
-            bug: 'not edible for personal computers and public use',
-            Bug_ID: '25367245'
+            Description: 'not edible for personal computers and public use',
+            ID: '25367245'
         },
         Author: 'Steven A. Ballmer',
         Architecture: 'x86-16'
@@ -55,8 +61,8 @@ var Versions:versionsinterface[] = [
         Features: 'Windows 1.04 .. Windows Write and Windows Paint',
         type: 'enhancement',
         Bug: {
-            bug: 'Lagging for many users to take to type',
-            Bug_ID: '25367265'
+            Description: 'Lagging for many users to take to type',
+            ID: '25367265'
         },
         Author: 'Bradford L. Smith',
         Architecture: 'x86-16'
@@ -68,8 +74,8 @@ var Versions:versionsinterface[] = [
         Features: 'Windows 2.01 have Desktop icons and Expanded Memory',
         type: 'major',
         Bug: {
-            bug: 'More Memory usage leads to Hanging of PC',
-            Bug_ID: '16231312'
+            Description: 'More Memory usage leads to Hanging of PC',
+            ID: '16231312'
         },
         Author: 'Raymond V. Gilmartin',
         Architecture: 'x86-16, IA-32'
@@ -81,8 +87,8 @@ var Versions:versionsinterface[] = [
         Features: 'Windows 2.03 have Improved graphics support,that one can overlap windows',
         type: 'enhancement',
         Bug: {
-            bug: 'Overhanging lead to Formatting of Data',
-            Bug_ID: '23252124'
+            Description: 'Overhanging lead to Formatting of Data',
+            ID: '23252124'
         },
         Author: 'William H. Gates III',
         Architecture: 'x86-16, IA-32'
@@ -94,8 +100,8 @@ var Versions:versionsinterface[] = [
         Features: 'Windows 2.1 Controls the screen layout, and use keyboard shortcuts to speed up your work',
         type: 'patch',
         Bug: {
-            bug: 'Can work only in one windows',
-            Bug_ID: '23251242'
+            Description: 'Can work only in one windows',
+            ID: '23251242'
         },
         Author: 'Peter S. Klein',
         Architecture: 'x86-16, IA-32'
@@ -107,8 +113,8 @@ var Versions:versionsinterface[] = [
         Features: 'Windows 2.11.. More windows, more speed',
         type: 'patch',
         Bug: {
-            bug: 'File Memory is not expensible',
-            Bug_ID: '23251243'
+            Description: 'File Memory is not expensible',
+            ID: '23251243'
         },
         Author: 'Stephen J. Luczo',
         Architecture: 'x86-16, IA-32'
@@ -120,8 +126,8 @@ var Versions:versionsinterface[] = [
         Features: 'Windows 3.0 has significantly better performance, advanced graphics with 16 colors, Program Manager, File Manager, and Print Manager arrive in Windows 3.0.',
         type: 'major',
         Bug: {
-            bug: 'Graphics might be slow some times',
-            Bug_ID: '23161213'
+            Description: 'Graphics might be slow some times',
+            ID: '23161213'
         },
         Author: 'Bill Gates',
         Architecture: 'x86-16, IA-32'
@@ -133,8 +139,8 @@ var Versions:versionsinterface[] = [
         Features: 'Windows 3.1 grows with the release of a new Windows software development kit (SDK), which helps software developers focus more on writing programs and less on writing device drivers',
         type: 'patch',
         Bug: {
-            bug: 'Not suitable for Extensible users',
-            Bug_ID: '23161224'
+            Description: 'Not suitable for Extensible users',
+            ID: '23161224'
         },
         Author: 'Bill Gates',
         Architecture: 'x86-16, IA-32'
@@ -144,15 +150,15 @@ var Versions:versionsinterface[] = [
 // console.log('Versions:',Versions)
 
 console.log("------------------------------------------------------------------------------------------------------------------------------------------- ")
-var array1:any[] = []
-let count:any = 0
+var array1: string[] = []
+let count: any = 0
 
 
 // 1.Function for No. of versions released on particular "YEAR"
 
-function findByYear(year:any) {
-    var filteredYear:any[] = []
-    let releasedYear:any = Versions.filter(Versions => (Versions.Released.toString().includes(year)))
+function findByYear(year: string) {
+    var filteredYear: any[] = []
+    let releasedYear: any = Versions.filter(Versions => (Versions.Released.toString().includes(year)))
     console.log("Question 1: How many Versions released in the specified 'Year'?,  I/p: '1987' \n")
 
     console.log(`Ans: '${releasedYear.length}' Versions have been found in the year '${year}' \n`)
@@ -169,8 +175,8 @@ function findByYear(year:any) {
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 // 2.Function for the "Architecture" which has been used for more versions
 
-function findArch(archi:any) {
-    var filteredArchi:any[] = []
+function findArch(archi: any) {
+    var filteredArchi: string[] = []
     let architech = Versions.filter(Versions => (Versions.Architecture.includes(archi)))
     console.log("Question 2: Find the No. of Versions released based upon the specified 'Architecture',  I/p: 'IA-32' \n")
 
@@ -186,8 +192,8 @@ function findArch(archi:any) {
 
 // 3.Function for the versions which are based under the specified "TYPE"
 
-function findByType(Type:any) {
-    var filteredType:any[] = []
+function findByType(Type: string) {
+    var filteredType: string[] = []
     let typ = Versions.filter(Versions => Versions.type.includes(Type))
     console.log("Question 3: Finding No. of Versions updated based on the specified 'type' \n")
 
@@ -211,7 +217,7 @@ function findAuthor() {
         count++
     }
 
-    const Authorobj:any = {}
+    const Authorobj: any = {}
     for (let a of array1) {
         if (a in Authorobj) {
             Authorobj[a] += 1
@@ -222,14 +228,14 @@ function findAuthor() {
     }
 
     // Sorting the Object containing the Authors
-    const sort_des = (Obj:any) => {
-        var arr4:any[] = []
-        const des:any = {}
+    const sort_des = (Obj: any) => {
+        var arr4: any[] = []
+        const des: any = {}
         for (let m in Obj) {
             arr4.push(Obj[m])
         }
 
-        function srt1(a:any,b:any) {
+        function srt1(a: any, b: any) {
             return a - b
         }
         arr4.sort(srt1)
@@ -254,7 +260,7 @@ function findAuthor() {
 
     let VersionByMostAuthor = Versions.filter(n => n.Author.includes('Bill Gates'))
 
-    var filteredAuthor:any[] = []
+    var filteredAuthor: any[] = []
     for (let r of VersionByMostAuthor) {
         filteredAuthor.push(r.Name)
     }
@@ -265,16 +271,16 @@ function findAuthor() {
 
 // 5.Function for Bug_Id
 
-function findByBugid(id:any) {
+function findByBugid(id: any) {
     console.log("Question 5: Finding Name of the version by the given i/p 'Bug_ID' \n")
     // for(c in Versions){
-    var array2:any[] = []
+    var array2: any[] = []
     // for(i of Versions){
     //     array2.push(i.Bug.Bug_ID)
     // }
     // console.log(array2)
-    let findbyID = Versions.filter(Obj => Obj.Bug.Bug_ID.includes(id))
-    var array3:any[] = []
+    let findbyID = Versions.filter(Obj => Obj.Bug.ID.includes(id))
+    var array3: any[] = []
     for (let c of findbyID) {
         console.log(`'${id}' belongs to the version '${c.Name}' \n`)
     }
