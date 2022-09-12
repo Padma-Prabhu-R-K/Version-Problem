@@ -4,23 +4,27 @@ interface IBug_List {
 }
 
 interface IVersion {
-    Name: any,
+    Name: string,
     Released: Date,
     Version: string,
     Features: string,
-    type: string,
+    type: ERELEASE_TYPE,
     Bug: IBug_List,
     Author: string,
     Architecture: string
 }
-
+enum ERELEASE_TYPE {
+    enhancement,
+    patch,
+    major
+}
 var Versions: IVersion[] = [
     {
         Name: 'Windows 1.01',
         Released: new Date('11-20-1985'),
         Version: '1.01',
         Features: 'Windows 1.0 .. clipboard, calendar',
-        type: 'patch',
+        type: ERELEASE_TYPE.patch,
         Bug: {
             Description: 'GUI is not clear',
             ID: '13121623'
@@ -33,7 +37,7 @@ var Versions: IVersion[] = [
         Released: new Date('05-14-1986'),
         Version: '1.02',
         Features: 'Windows 1.02 .. clock, control panel',
-        type: 'patch',
+        type: ERELEASE_TYPE.patch,
         Bug: {
             Description: 'Ms-Dos is not suitable for higher bit servers',
             ID: '21242325'
@@ -46,7 +50,7 @@ var Versions: IVersion[] = [
         Released: new Date('08-21-1986'),
         Version: '1.03',
         Features: 'Windows 1.03 .. clock, control panel, Notepad editor',
-        type: 'enhancement',
+        type: ERELEASE_TYPE.enhancement,
         Bug: {
             Description: 'not edible for personal computers and public use',
             ID: '25367245'
@@ -59,7 +63,7 @@ var Versions: IVersion[] = [
         Released: new Date('04-10-1987'),
         Version: '1.04',
         Features: 'Windows 1.04 .. Windows Write and Windows Paint',
-        type: 'enhancement',
+        type: ERELEASE_TYPE.enhancement,
         Bug: {
             Description: 'Lagging for many users to take to type',
             ID: '25367265'
@@ -72,7 +76,7 @@ var Versions: IVersion[] = [
         Released: new Date('12-09-1987'),
         Version: '2.01',
         Features: 'Windows 2.01 have Desktop icons and Expanded Memory',
-        type: 'major',
+        type: ERELEASE_TYPE.major,
         Bug: {
             Description: 'More Memory usage leads to Hanging of PC',
             ID: '16231312'
@@ -85,7 +89,7 @@ var Versions: IVersion[] = [
         Released: new Date('12-09-1987'),
         Version: '2.03',
         Features: 'Windows 2.03 have Improved graphics support,that one can overlap windows',
-        type: 'enhancement',
+        type: ERELEASE_TYPE.enhancement,
         Bug: {
             Description: 'Overhanging lead to Formatting of Data',
             ID: '23252124'
@@ -98,7 +102,7 @@ var Versions: IVersion[] = [
         Released: new Date('05-27-1988'),
         Version: '2.10',
         Features: 'Windows 2.1 Controls the screen layout, and use keyboard shortcuts to speed up your work',
-        type: 'patch',
+        type: ERELEASE_TYPE.patch,
         Bug: {
             Description: 'Can work only in one windows',
             ID: '23251242'
@@ -111,7 +115,7 @@ var Versions: IVersion[] = [
         Released: new Date('03-13-1989'),
         Version: '2.11',
         Features: 'Windows 2.11.. More windows, more speed',
-        type: 'patch',
+        type: ERELEASE_TYPE.patch,
         Bug: {
             Description: 'File Memory is not expensible',
             ID: '23251243'
@@ -124,7 +128,7 @@ var Versions: IVersion[] = [
         Released: new Date('05-22-1990'),
         Version: '3.00',
         Features: 'Windows 3.0 has significantly better performance, advanced graphics with 16 colors, Program Manager, File Manager, and Print Manager arrive in Windows 3.0.',
-        type: 'major',
+        type: ERELEASE_TYPE.major,
         Bug: {
             Description: 'Graphics might be slow some times',
             ID: '23161213'
@@ -137,7 +141,7 @@ var Versions: IVersion[] = [
         Released: new Date('04-06-1992'),
         Version: '3.10',
         Features: 'Windows 3.1 grows with the release of a new Windows software development kit (SDK), which helps software developers focus more on writing programs and less on writing device drivers',
-        type: 'patch',
+        type: ERELEASE_TYPE.patch,
         Bug: {
             Description: 'Not suitable for Extensible users',
             ID: '23161224'
@@ -192,12 +196,12 @@ function findArch(archi: any) {
 
 // 3.Function for the versions which are based under the specified "TYPE"
 
-function findByType(Type: string) {
+function findByType(Type: ERELEASE_TYPE) {
     var filteredType: string[] = []
-    let typ = Versions.filter(Versions => Versions.type.includes(Type))
+    let typ = Versions.filter(Versions => Versions.type == Type)
     console.log("Question 3: Finding No. of Versions updated based on the specified 'type' \n")
 
-    console.log(`'${typ.length}' versions have been released in the type '${Type}' \n`)
+    console.log(`'${typ.length}' versions have been released in the type '${ERELEASE_TYPE[Type]}' \n`)
     for (let i in typ) {
         count = 0
         filteredType.push(typ[i].Name)
@@ -291,6 +295,6 @@ function findByBugid(id: any) {
 
 findByYear('1987')
 findArch('IA-32')
-findByType('patch')
+findByType(ERELEASE_TYPE.patch)
 findAuthor()
 findByBugid('23161224')
