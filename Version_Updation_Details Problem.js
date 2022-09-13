@@ -8,7 +8,7 @@ var Versions = [
         Bug: {
             bug: 'GUI is not clear',
             Bug_ID: '13121623'
-        } ,
+        },
         Author: 'Bill Gates',
         Architecture: 'x86-16'
     },
@@ -21,7 +21,7 @@ var Versions = [
         Bug: {
             bug: 'Ms-Dos is not suitable for higher bit servers',
             Bug_ID: '21242325'
-        } ,
+        },
         Author: 'William H. Gates III',
         Architecture: 'x86-16'
     },
@@ -34,7 +34,7 @@ var Versions = [
         Bug: {
             bug: 'not edible for personal computers and public use',
             Bug_ID: '25367245'
-        } ,
+        },
         Author: 'Steven A. Ballmer',
         Architecture: 'x86-16'
     },
@@ -47,7 +47,7 @@ var Versions = [
         Bug: {
             bug: 'Lagging for many users to take to type',
             Bug_ID: '25367265'
-        } ,
+        },
         Author: 'Bradford L. Smith',
         Architecture: 'x86-16'
     },
@@ -60,7 +60,7 @@ var Versions = [
         Bug: {
             bug: 'More Memory usage leads to Hanging of PC',
             Bug_ID: '16231312'
-        } ,
+        },
         Author: 'Raymond V. Gilmartin',
         Architecture: 'x86-16, IA-32'
     },
@@ -73,7 +73,7 @@ var Versions = [
         Bug: {
             bug: 'Overhanging lead to Formatting of Data',
             Bug_ID: '23252124'
-        } ,
+        },
         Author: 'William H. Gates III',
         Architecture: 'x86-16, IA-32'
     },
@@ -86,7 +86,7 @@ var Versions = [
         Bug: {
             bug: 'Can work only in one windows',
             Bug_ID: '23251242'
-        } ,
+        },
         Author: 'Peter S. Klein',
         Architecture: 'x86-16, IA-32'
     },
@@ -99,7 +99,7 @@ var Versions = [
         Bug: {
             bug: 'File Memory is not expensible',
             Bug_ID: '23251243'
-        } ,
+        },
         Author: 'Stephen J. Luczo',
         Architecture: 'x86-16, IA-32'
     },
@@ -112,7 +112,7 @@ var Versions = [
         Bug: {
             bug: 'Graphics might be slow some times',
             Bug_ID: '23161213'
-        } ,
+        },
         Author: 'Bill Gates',
         Architecture: 'x86-16, IA-32'
     },
@@ -216,41 +216,40 @@ function findAuthor() {
     const sort_des = (Obj) => {
         arr4 = []
         des = {}
-        for (m in Obj){
-               arr4.push(Obj[m]) 
+        for (m in Obj) {
+            arr4.push(Obj[m])
         }
-        
-        function srt1(a,b){
-               return a-b
+
+        function srt1(a, b) {
+            return a - b
         }
         arr4.sort(srt1)
         arr4.reverse()
-        
-        for(n of arr4){
-           for(o in Obj){
-             if(n == Obj[o]){
-                des[o] = Obj[o]
-             }
-           }
+
+        for (n of arr4) {
+            for (o in Obj) {
+                if (n == Obj[o]) {
+                    des[o] = Obj[o]
+                }
+            }
         }
         return des
     }
 
-    sorted_AuthorObj = sort_des(Authorobj)
+    // sorted_AuthorObj = sort_des(Authorobj)
     console.log("Question 4: Which author has contributed in more Versions? \n")
-    for (b in sorted_AuthorObj) {
-        console.log(`Ans: '${b}' is the Author who has contibuted in more versions, contributing in '${sorted_AuthorObj[b]}' versions \n`)
+    for (b in sort_des(Authorobj)) {
+        console.log(`Ans: '${b}' is the Author who has contibuted in more versions, contributing in '${sort_des(Authorobj)[b]}' versions \n`)
+        VersionByMostAuthor = Versions.filter(n => n.Author.includes(b))
+
+        filteredAuthor = []
+        for (r of VersionByMostAuthor) {
+            filteredAuthor.push(r.Name)
+        }
+        console.log('Filtered by Author:', filteredAuthor)
+        console.log("------------------------------------------------------------------------------------------------------------------------------------- ")
         break;
     }
-
-    VersionByMostAuthor = Versions.filter(n => n.Author.includes('Bill Gates'))
-
-    filteredAuthor = []
-    for(r of VersionByMostAuthor){
-        filteredAuthor.push(r.Name)
-    }
-    console.log('Filtered by Author:',filteredAuthor)
-    console.log("------------------------------------------------------------------------------------------------------------------------------------- ")
 }
 
 
@@ -259,17 +258,17 @@ function findAuthor() {
 function findByBugid(id) {
     console.log("Question 5: Finding Name of the version by the given i/p 'Bug_ID' \n")
     // for(c in Versions){
-        array2=[]
-        // for(i of Versions){
-        //     array2.push(i.Bug.Bug_ID)
-        // }
-        // console.log(array2)
+    array2 = []
+    // for(i of Versions){
+    //     array2.push(i.Bug.Bug_ID)
+    // }
+    // console.log(array2)
     findbyID = Versions.filter(Obj => Obj.Bug.Bug_ID.includes(id))
-    array3=[]
-    for(c of findbyID){
+    array3 = []
+    for (c of findbyID) {
         console.log(`Ans: '${id}' belongs to the version '${c.Name}' \n`)
-    }  
-    console.log("----------------------------------------------------------------------------------------------------------------------------- ") 
+    }
+    console.log("----------------------------------------------------------------------------------------------------------------------------- ")
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------

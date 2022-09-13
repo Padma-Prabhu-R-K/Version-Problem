@@ -150,23 +150,16 @@ var Versions: IVersion[] = [
         Architecture: 'x86-16, IA-32'
     }
 ]
-
 // console.log('Versions:',Versions)
-
 console.log("------------------------------------------------------------------------------------------------------------------------------------------- ")
 var array1: string[] = []
 let count: any = 0
-
-
 // 1.Function for No. of versions released on particular "YEAR"
-
 function findByYear(year: string) {
     var filteredYear: any[] = []
     let releasedYear: any = Versions.filter(Versions => (Versions.Released.toString().includes(year)))
     console.log("Question 1: How many Versions released in the specified 'Year'?,  I/p: '1987' \n")
-
     console.log(`Ans: '${releasedYear.length}' Versions have been found in the year '${year}' \n`)
-
     for (let p of releasedYear) {
         count = 0
         filteredYear.push(p.Name)
@@ -175,15 +168,12 @@ function findByYear(year: string) {
     console.log('Filter by Year:', filteredYear)
     console.log("--------------------------------------------------------------------------------------------------------------------------------------- ")
 }
-
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 // 2.Function for the "Architecture" which has been used for more versions
-
 function findArch(archi: any) {
     var filteredArchi: string[] = []
     let architech = Versions.filter(Versions => (Versions.Architecture.includes(archi)))
     console.log("Question 2: Find the No. of Versions released based upon the specified 'Architecture',  I/p: 'IA-32' \n")
-
     console.log(`'${architech.length}' versions are designed using based upon '${archi}' Architecture \n`)
     for (let i of architech) {
         count = 0
@@ -210,9 +200,7 @@ function findByType(Type: ERELEASE_TYPE) {
     console.log('FilteredbyType:', filteredType)
     console.log("--------------------------------------------------------------------------------------------------------------------------------------- ")
 }
-
 // 4.Function for the "Author" who contributed in more Versions 
-
 function findAuthor() {
     array1 = []
     for (let i of Versions) {
@@ -220,7 +208,6 @@ function findAuthor() {
         array1.push(i.Author)
         count++
     }
-
     const Authorobj: any = {}
     for (let a of array1) {
         if (a in Authorobj) {
@@ -230,7 +217,6 @@ function findAuthor() {
             Authorobj[a] = 1
         }
     }
-
     // Sorting the Object containing the Authors
     const sort_des = (Obj: any) => {
         var arr4: any[] = []
@@ -238,13 +224,11 @@ function findAuthor() {
         for (let m in Obj) {
             arr4.push(Obj[m])
         }
-
         function srt1(a: any, b: any) {
             return a - b
         }
         arr4.sort(srt1)
         arr4.reverse()
-
         for (let n of arr4) {
             for (let o in Obj) {
                 if (n == Obj[o]) {
@@ -254,27 +238,22 @@ function findAuthor() {
         }
         return des
     }
-
-    let sorted_AuthorObj = sort_des(Authorobj)
     console.log("Question 4: Which author has contributed in more Versions? \n")
-    for (let b in sorted_AuthorObj) {
-        console.log(`'${b}' is the Author who has contibuted in more versions, contributing in '${sorted_AuthorObj[b]}' versions \n`)
+    for (let b in sort_des(Authorobj)) {
+        console.log(`'${b}' is the Author who has contibuted in more versions, contributing in '${sort_des(Authorobj)[b]}' versions \n`)
+        let VersionByMostAuthor = Versions.filter(n => n.Author.includes(b))
+        var filteredAuthor: any[] = []
+        for (let r of VersionByMostAuthor) {
+            filteredAuthor.push(r.Name)
+        }
+        console.log('Filtered by Author:', filteredAuthor)
+        console.log("------------------------------------------------------------------------------------------------------------------------------------- ")
         break;
     }
 
-    let VersionByMostAuthor = Versions.filter(n => n.Author.includes('Bill Gates'))
-
-    var filteredAuthor: any[] = []
-    for (let r of VersionByMostAuthor) {
-        filteredAuthor.push(r.Name)
-    }
-    console.log('Filtered by Author:', filteredAuthor)
-    console.log("------------------------------------------------------------------------------------------------------------------------------------- ")
 }
 
-
 // 5.Function for Bug_Id
-
 function findByBugid(id: any) {
     console.log("Question 5: Finding Name of the version by the given i/p 'Bug_ID' \n")
     // for(c in Versions){
@@ -290,7 +269,6 @@ function findByBugid(id: any) {
     }
     console.log("----------------------------------------------------------------------------------------------------------------------------- ")
 }
-
 // --------------------------------------------------------------------------------------------------------------------------------------------------
 
 findByYear('1987')
